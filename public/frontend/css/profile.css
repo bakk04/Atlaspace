@@ -1,0 +1,343 @@
+/* Variables globales */
+:root {
+    --gradient-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    --gradient-card: linear-gradient(135deg, #FF8008 0%, #FFA03C 100%);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --border-radius: 20px;
+    --card-radius: 16px;
+}
+
+/* Conteneur principal */
+.profile-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Carte de profil */
+.profile-card {
+    position: relative;
+    width: 100%;
+}
+
+/* En-tête du profil */
+.profile-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 2rem;
+    align-items: start;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Avatar */
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background: var(--gradient-card);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+/* Informations du profil */
+.profile-info {
+    padding-right: 2rem;
+}
+
+.profile-info h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.profile-info h2 {
+    font-size: 1.1rem;
+    color: #718096;
+}
+
+/* Boutons de paramètres */
+.settings-option {
+    margin-left: auto;
+}
+
+.settings-option button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: white;
+    border: 1px solid #e2e8f0;
+}
+
+.settings-option button:hover {
+    background: #f8fafc;
+}
+
+.settings-option .delete-btn {
+    color: #e53e3e;
+    border-color: #fed7d7;
+}
+
+.settings-option .delete-btn:hover {
+    background: #fff5f5;
+}
+
+/* Statistiques */
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+    padding: 0 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--card-radius);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #718096;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Sections de réservation */
+.reservation-section {
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+}
+
+.section-card {
+    background: white;
+    border-radius: var(--card-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #e2e8f0;
+}
+
+/* Statistiques réduites */
+.profile-stats-inline {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+/* Menu déroulant */
+.dropdown {
+    position: relative;
+    margin-left: auto;
+}
+
+.dropdown-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #2d3748;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    z-index: 10;
+    width: 200px;
+}
+
+.dropdown-content form {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.dropdown-content form:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Tables */
+.table-container {
+    overflow-x: auto;
+    border-radius: var(--card-radius);
+}
+
+.reservation-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.reservation-table th {
+    padding: 1.25rem 1rem;
+    font-weight: 600;
+    color: #4a5568;
+    background: #f8fafc;
+    text-align: left;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.reservation-table td {
+    padding: 1.25rem 1rem;
+    color: #4a5568;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.reservation-table tr:hover {
+    background: #f8fafc;
+}
+
+/* Badge de statut */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.status-badge.paid {
+    background: #def7ec;
+    color: #046c4e;
+}
+
+.status-badge.unpaid {
+    background: #fff5f5;
+    color: #c53030;
+}
+
+/* Bouton de suppression dans la table */
+.delete-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    color: #e53e3e;
+    background: white;
+    border: 1px solid #fed7d7;
+    transition: all 0.2s ease;
+    margin-top: 12px;
+}
+
+.delete-btn:hover {
+    background: #fff5f5;
+}
+
+/* Message "Aucune réservation" */
+.reservation-table td[colspan="6"] {
+    text-align: center;
+    padding: 2rem;
+    color: #718096;
+}
+
+.reservation-table td[colspan="6"] i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #a0aec0;
+}
+
+.reservation-table td[colspan="6"] p {
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .profile-header {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .profile-avatar {
+        margin: 0 auto;
+    }
+
+    .profile-info {
+        padding-right: 0;
+    }
+
+    .settings-option {
+        margin: 0 auto;
+    }
+
+    .profile-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profile-container {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .table-container {
+        margin: 0 -1rem;
+    }
+
+    .reservation-table {
+        font-size: 0.875rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-card {
+    animation: fadeIn 0.5s ease-out;
+}

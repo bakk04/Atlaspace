@@ -1,0 +1,891 @@
+:root {
+    --primary: #FF8C00;
+    --primary-light: #FFA500;
+    --primary-dark: #FF7000;
+    --accent: #FFD700;
+    --pattern: #FFE4B5;
+    --text-dark: #4A3200;
+    --background-color: #f5f5f5;
+    --accent-color: #FF6347;
+    --font-family: 'Roboto', sans-serif;
+    --primary-color: #FF8C00; /* Couleur principale */
+    --secondary-color: #FFD700; /* Couleur secondaire */
+    --background-color: #f5f5f5;
+    --accent-color: #FF6347; /* Pour des touches dynamiques */
+    --title-gradient: linear-gradient(90deg, #FF8C00, #FF6347); /* Dégradé pour les titres */
+    --detail-card-gradient: linear-gradient(145deg, #FF6347, #FF8C00); /* Dégradé pour les cartes de détails */
+    --button-gradient: linear-gradient(145deg, #FF8C00, #FFD700); 
+    --primary-color: #333333; /* Couleur sombre pour le texte */
+    --secondary-color: #F5F5F5; /* Fond léger */
+    --accent-color: #FF6347; /* Couleur d'accent pour le bouton */
+    --border-color: #D1D5DB; /* Bordure gris clair */
+    --font-family: 'Roboto', sans-serif;
+    font-size : 13px;
+}
+:root {
+    --primary: #FF8C00;
+    --primary-light: #FFA500;
+    --primary-dark: #FF7000;
+    --accent: #FFD700;
+    --text-dark: #333;
+    --text-light: #666;
+    --background: #f8f9fa;
+}
+
+/* Layout principal */
+.hotel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 1.5rem;
+}
+
+.hotel-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+/* Mise en page flex pour image à gauche */
+.hotel-content {
+    display: flex;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+/* Conteneur d'image avec effets avancés */
+.hotel-image-container {
+    flex: 0 0 45%;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hotel-image-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 140, 0, 0.2),
+        transparent
+    );
+    z-index: 1;
+}
+
+.hotel-image-container::after {
+    content: '★';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: var(--primary);
+    background: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.hotel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hotel-image-container:hover .hotel-image {
+    transform: scale(1.05);
+}
+
+/* Section détails à droite */
+.hotel-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Titre avec style avancé */
+.hotel-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.hotel-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 3px;
+}
+
+/* Grille de détails */
+.hotel-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+/* Cartes de détail avec symboles avancés */
+.detail-card {
+    position: relative;
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgb(0,0,0,0.2);
+}
+
+.detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 4px 0 0 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.detail-card:hover {
+    transform: translateX(5px);
+    border-color: var(--primary-light);
+}
+
+.detail-card:hover::before {
+    opacity: 1;
+}
+
+.detail-label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.detail-value {
+    font-size: 1rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detail-value i {
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+/* Bouton avec effets avancés */
+.reserve-button {
+    position: relative;
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    overflow: hidden;
+    isolation: isolate;
+    transition: all 0.3s ease;
+}
+
+.reserve-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.reserve-button:hover::before {
+    transform: translateX(100%);
+}
+
+.reserve-button::after {
+    content: '→';
+    position: absolute;
+    right: 2rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.reserve-button:hover {
+    padding-right: 3rem;
+}
+
+.reserve-button:hover::after {
+    opacity: 1;
+}
+
+/* Media queries pour responsive */
+@media (max-width: 768px) {
+    .hotel-content {
+        flex-direction: column;
+    }
+
+    .hotel-image-container {
+        height: 250px;
+    }
+
+    .hotel-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hotel-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Modal amélioré */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.modal-content {
+    background: white;
+    padding: 1.5rem; /* Réduction de la marge interne */
+    border-radius: 1.5rem;
+    width: 80%; /* Augmenter légèrement la largeur */
+    max-width: 450px; /* Réduire la largeur max */
+    margin: auto;
+    position: relative;
+    border: 2px solid var(--accent);
+    animation: modalSlideIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Formulaire avec effet moderne */
+.form-group {
+    margin-bottom: 1.5rem; /* Réduire l'espace entre les champs */
+    position: relative;
+}
+
+.form-label {
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    transform: translateY(-50%);
+    background: white;
+    padding: 0 0.5rem;
+    color: var(--primary);
+    font-weight: 500;
+    font-size: 0.85rem; /* Réduire la taille de la police */
+    z-index: 1;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.8rem 1.2rem; /* Réduire les espacements internes */
+    border: 2px solid var(--pattern);
+    border-radius: 1rem;
+    background: white;
+    transition: all 0.3s ease;
+    font-size: 0.95rem; /* Réduire légèrement la taille de la police */
+}
+
+.form-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(255, 140, 0, 0.1);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+/* Bouton de fermeture du modal */
+.close-modal {
+    position: absolute;
+    top: 1rem; /* Réduire la distance du bord supérieur */
+    right: 1rem; /* Réduire la distance du bord droit */
+    background: none;
+    border: 2px solid var(--primary);
+    width: 35px; /* Réduire la taille du bouton */
+    height: 35px; /* Réduire la taille du bouton */
+    border-radius: 50%;
+    color: var(--primary);
+    font-size: 1.2rem; /* Réduire la taille du texte */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal:hover {
+    background: var(--primary);
+    color: white;
+    transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+    .hotel-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .hotel-title {
+        font-size: 1.8rem; /* Réduire la taille du titre */
+    }
+
+    .detail-card {
+        margin-bottom: 1.5rem;
+    }
+}
+.stripe-button {
+    background: linear-gradient(45deg, #ff6a00, #ff9e00); /* Dégradé orange */
+    color: white;                              /* Texte en blanc */
+    font-size: 1rem;                           /* Taille de texte */
+    padding: 7px 10px;                        /* Espacement intérieur */
+    border-radius: 5px;                        /* Coins arrondis */
+    border: none;                              /* Aucune bordure */
+    cursor: pointer;                          /* Curseur en forme de main */
+    transition: all 0.3s ease-in-out, transform 0.2s ease; /* Transition douce et transformation */
+    font-weight: bold;                         /* Texte en gras */
+    display: inline-block;                     /* S'assurer que le bouton est en ligne */
+    text-align: center;                        /* Centrer le texte */
+    width: 100%;                               /* Prendre toute la largeur disponible */
+    max-width: 200px;                          /* Largeur maximale */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de l'ombre intérieure (inset shadow) et l'animation du bouton */
+.stripe-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Ombre intérieure blanche légère */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Effet au survol (hover) */
+.stripe-button:hover {
+    background: linear-gradient(45deg, #ff9e00, #ff6a00); /* Inverser le dégradé au survol */
+    transform: translateY(-5px) scale(1.05);  /* Légère élévation et agrandissement */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Ombre plus marquée */
+}
+
+/* Animation lors du survol avec des ombres et effets supplémentaires */
+.stripe-button:hover::before {
+    opacity: 1; /* Rendre l'ombre intérieure visible */
+}
+
+/* Effet de pression (active) */
+.stripe-button:active {
+    background: linear-gradient(45deg, #ff6a00, #ff9e00); /* Couleur du dégradé maintenue */
+    transform: translateY(0) scale(1);  /* Effet de clic en réinitialisant l'élévation */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+/* Effet de focus (lorsque le bouton reçoit le focus) */
+.stripe-button:focus {
+    outline: none;                             /* Retirer le contour par défaut */
+    box-shadow: 0 0 0 4px rgba(255, 140, 0, 0.3); /* Ombre lumineuse orange */
+}
+
+/* Animation de clignotement pour l'effet focus (légèrement plus visible) */
+.stripe-button:focus-visible {
+    animation: pulse 1s infinite; /* Animation de pulsation pour attirer l'attention */
+}
+
+/* Animation pulsante */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* Responsive : ajustement pour les petits écrans */
+@media (max-width: 768px) {
+    .stripe-button {
+        padding: 10px 20px; /* Moins d'espacement sur les petits écrans */
+        width: auto;        /* S'adapte au contenu */
+    }
+}
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+:root {
+    --primary-orange: #ff7842;
+    --secondary-orange: #ff5722;
+    --accent-orange: #ff9800;
+    --gradient-orange: linear-gradient(120deg, #ff8a00, #ff5f00, #ff4500);
+    --dark-text: #2d3436;
+    --light-text: #636e72;
+    --background: #f8f9fa;
+    --card-bg: #ffffff;
+    --success: #00b894;
+    --warning: #fdcb6e;
+    --error: #ff7675;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.comments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.comments-header h1 {
+    font-size: 2.5rem;
+    color: var(--dark-text);
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.comments-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: 4px;
+    background: var(--gradient-orange);
+    border-radius: 2px;
+}
+
+.add-comment-btn {
+    background: var(--gradient-orange);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(255, 120, 0, 0.2);
+}
+
+.add-comment-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.add-comment-btn:hover::before {
+    left: 100%;
+}
+
+.add-comment-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(255, 120, 0, 0.3);
+}
+
+.comments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+.comment-card {
+    background: var(--card-bg);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    opacity: 0;
+    animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.comment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,136,0,0.1), rgba(255,95,0,0.1));
+    border-radius: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.comment-card:hover {
+    transform: translateY(-10px) rotateX(3deg) rotateY(3deg);
+    box-shadow: 0 20px 40px rgba(255, 120, 0, 0.15);
+}
+
+.comment-card:hover::before {
+    opacity: 1;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.user-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--gradient-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(255, 120, 0, 0.3);
+    animation: float 6s ease-in-out infinite;
+}
+
+.user-avatar::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+}
+
+.user-details h3 {
+    font-size: 1.25rem;
+    color: var(--dark-text);
+    margin-bottom: 0.25rem;
+}
+
+.comment-date {
+    color: var(--light-text);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.comment-date i {
+    color: var(--secondary-orange);
+    font-size: 0.75rem;
+}
+
+.rating {
+    display: flex;
+    gap: 0.35rem;
+    margin: 1.25rem 0;
+}
+
+.star {
+    color: var(--warning);
+    font-size: 1.25rem;
+    filter: drop-shadow(0 2px 4px rgba(253, 203, 110, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.star:hover {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.comment-content {
+    line-height: 1.8;
+    color: var(--light-text);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--accent-orange);
+}
+
+.comment-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.hotel-name {
+    color: var(--primary-orange);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    background: rgba(255,120,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.hotel-name:hover {
+    background: rgba(255,120,0,0.2);
+    transform: translateX(5px);
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: var(--light-text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.75rem;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,120,0,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.action-btn:hover::before {
+    width: 200%;
+    height: 200%;
+}
+
+.action-btn:hover {
+    color: var(--primary-orange);
+    transform: rotate(15deg);
+}
+
+/* Modal amélioré */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 2rem;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    transform: translateY(-50px);
+    opacity: 0;
+    animation: modalSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+}
+
+@keyframes modalSlideIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animations globales */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive design amélioré */
+@media (max-width: 768px) {
+    .comments-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .comments-header {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .comments-header h1::after {
+        left: 20%;
+        width: 60%;
+    }
+
+    .add-comment-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
+
+/* Ajout d'effets de scroll doux */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Style de la barre de défilement */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-orange);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-orange);
+}
+/* Style de base pour le bouton */
+.see-more-btn {
+    background: linear-gradient(45deg, #FF6A00, #FF9F00); /* Dégradé orange */
+    border: none;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 8px 20px; /* Bouton plus petit */
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center; /* Centrer l'icône et le texte */
+    gap: 8px; /* Espacement entre l'icône et le texte */
+    text-align : center;
+}
+
+/* Ajouter une icône avant le texte */
+.see-more-btn i {
+    font-size: 18px; /* Taille de l'icône */
+}
+
+/* Effet de survol */
+.see-more-btn:hover {
+    background: linear-gradient(45deg, #FF9F00, #FF6A00); /* Inversion du dégradé */
+    transform: scale(1.05); /* Agrandissement léger */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombre renforcée */
+}
+
+/* Effet de focus */
+.see-more-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 159, 0, 0.5); /* Accent sur le focus */
+}
