@@ -34,5 +34,4 @@ class Commentaire extends Model
     {
         return $this->belongsTo(Hotel::class, 'id_hotel');
     }
-
 }

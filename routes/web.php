@@ -36,6 +36,7 @@ Route::post('/register', [RegisteredUserController::class, 'store'])->name('regi
 Route::post('/connexion', [Connexion::class, 'login'])->name('connexion.submit');
 Route::post('/payment-intent', [PaymentController::class, 'createPaymentIntent'])->name('payment.intent');
 Route::post('/hotel/details/commentaire', [CommentaireController::class, 'affiche'])->name('commentaire.store');
+Route::post('/hotel/Recherche',[ControllerHotel::class,'Recherche'])->name('RechercheHotel');
 
 // Routes DELETE pour gérer les suppressions
 Route::delete('/profile/delete', [Connexion::class, 'deleteProfile'])->name('profile.delete');
