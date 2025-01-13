@@ -38,7 +38,7 @@
         </form>
 
         <!-- Section Stripe -->
-        <h3 class="text-lg font-semibold mt-6">Payer avec Stripe</h3>
+        <h5 class=" font-semibold mt-2">Payer avec Stripe</h5>
         <div id="card-element" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;"></div>
         <div id="card-errors" style="color: red; margin-top: 10px;"></div>
         <button type="button" id="stripe-payment-button" class="stripe-button"

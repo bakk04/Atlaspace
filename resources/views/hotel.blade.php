@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="search-wrap-1 ftco-animate">
+                    <div class="search-wrap-1 ftco-animate" id="Recherche">
                         <form method="POST" action="{{ route('RechercheHotel') }}" class="search-property-1">
                             @csrf
                             <div class="row no-gutters">
@@ -89,6 +89,24 @@
             </div>
         </div>
     </section>
+    <section class="destinations-section">
+        <h2 class="section-title">Destinations d'Exception</h2>
+        <p class="section-subtitle">Découvrez nos hôtels de luxe</p>
+        <form method="POST" action="{{ route('RechercheHotel') }}" class="search-property-1">
+            <div class="cities-grid">
+                @foreach ($hotelDatas as $hotelData)
+                    <div class="destination-item">
+                        <input type="hidden" name="name" value="{{ $hotelData->location }}">
+                        <img src="{{ asset($hotelData->background) }}" alt="{{ $hotelData->location }}"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="destination-content">
+                            <h3 class="city-name">{{ $hotelData->location }}</h3>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </form>
+    </section>
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center pb-4">
@@ -107,7 +125,7 @@
                             <div class="project-wrap hotel">
                                 <a href="#" class="img"
                                     style="background-image: url({{ asset($hotelData->background) }});">
-                                    <span class="price">{{ $hotelData->price }}</span>
+                                    <span class="price">{{ $hotelData->price }} MAD </span>
                                 </a>
                                 <div class="text p-4">
                                     <p class="star mb-2">
@@ -127,7 +145,10 @@
                                         <li><span class="flaticon-king-size"></span>{{ $hotelData->propriete2 }}</li>
                                         <li><span class="flaticon-sun-umbrella"></span>{{ $hotelData->propriete3 }}</li>
                                     </ul>
-                                    <button type="submit" class="btn btn-primary mt-3">Voir plus</button>
+                                    <button type="submit" class="btn-professional mt-3">
+                                        Voir plus
+                                        <span class="w3-animate-right btn-icon"></span>
+                                    </button>
                                 </div>
                             </div>
                         </form>

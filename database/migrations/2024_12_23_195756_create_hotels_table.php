@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('price');
             $table->string('location');
             $table->string('days');
+            $table->string('description');
+            $table->integer('chambre');
             $table->string('features');
             $table->string('background');
             $table->timestamps();

@@ -16,6 +16,13 @@ class Connexion extends Controller
         // Essayer de se connecter
         if (Auth::attempt($credentials)) {
             $userData = Auth::user();
+            if ($userData->type === 'admin') {
+                $client = User::with('reserves');
+                $totalHotel = Reserve::all();
+                $totalActivite = ReserveActivite::all();
+                $totalUser = User::all();
+                return view('admin', compact('userData','totalHotel', 'totalActivite', 'totalUser'));
+            }
             $userReserve = Reserve::where('user_id', $userData->id)->get();
             $ActiviteReserve = ReserveActivite::where('user_id', $userData->id)->get();
             // Si la connexion est réussie et qu'il n'y a pas de réservations

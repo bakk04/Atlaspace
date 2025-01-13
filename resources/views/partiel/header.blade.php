@@ -1,47 +1,52 @@
-<header class="header">
-    <div class="header-content">
-        <!-- Logo -->
-        <div class="logo-container">
-            <div class="logo-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                    <path d="m2 17 10 5 10-5"></path>
-                    <path d="m2 12 10 5 10-5"></path>
-                </svg>
-            </div>
-            <a href="/"><span class="logo-text">Atlaspace</span></a>
-        </div>
-        <!-- Navigation -->
-        <div class="nav-menu">
-            <nav class="nav-links">
-                <a href="/" class="nav-link active">Accueil</a>
-                <a href="/destination" class="nav-link">Destinations</a>
-                <a href="/hotel" class="nav-link">Hotel</a>
-                <a href="https://cdn.botpress.cloud/webchat/v2.3/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/22/17/20241222174806-BPJMYFGX.json"
-                    class="nav-link">AtlaspaceAi</a>
-                <a href="/propos" class="nav-link">À propos</a>
-            </nav>
-            <!-- Actions -->
-            <div class="header-actions">
-                <div class="search-wrapper">
-                    <a id="searchToggle" class="search-button" href="#Recherche">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </a>
-                </div>
-                <a href="/login" class="account-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+<header class="custom-header">
+    <div class="custom-container header-content">
+        <!-- Logo Section -->
+        <div class="custom-logo-container">
+            <a href="/" class="custom-logo-link" aria-label="Homepage">
+                <div class="custom-logo-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="m2 17 10 5 10-5"></path>
+                        <path d="m2 12 10 5 10-5"></path>
                     </svg>
-                    Mon Profile
-                </a>
-            </div>
+                </div>
+                <span class="custom-logo-text">Atlaspace</span>
+            </a>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="custom-nav-menu" aria-label="Main navigation">
+            <ul class="custom-nav-links">
+                <li><a href="/" class="custom-nav-link active" aria-current="page">Accueil</a></li>
+                <li><a href="/destination" class="custom-nav-link">Destinations</a></li>
+                <li><a href="/hotel" class="custom-nav-link">Hôtels</a></li>
+                <li><a href="/propos" class="custom-nav-link">À propos</a></li>
+                <li>
+                    <a href="https://cdn.botpress.cloud/webchat/v2.3/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/22/17/20241222174806-BPJMYFGX.json"
+                        class="custom-nav-link" target="_self" rel="noopener noreferrer">
+                        AtlaspaceAI
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Header Actions -->
+        <div class="custom-header-actions">
+            <!-- Search Button -->
+            <button id="searchToggle" class="custom-search-button" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
+
+            <!-- Profile Button -->
+            <a href="/login" class="custom-account-button" aria-label="Profile">
+                <i class="fas fa-user-circle"></i>
+                @if (Auth::check())
+                    <span>{{ Auth::user()->name }}</span>
+                @else
+                    <span>Mon Profil</span>
+                @endif
+            </a>
         </div>
     </div>
 </header>

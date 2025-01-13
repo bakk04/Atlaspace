@@ -205,14 +205,14 @@
                                     </p>
                                     <p class="mb-4">J'ai passé des vacances incroyables au Maroc ! Le désert du Sahara
                                         était magique, et la médina de Marrakech offre une expérience unique. Je reviendrai
-                                        certainement !"</p>
+                                        certainement !</p>
                                     <div class="d-flex align-items-center">
                                         <div class="user-img"
-                                            style="background-image: url('{{ asset('frontend/images/person_1.jpg') }}')">
+                                            style="background-image: url('{{ asset('frontend/images/faysal.jpg') }}')">
                                         </div>
                                         <div class="pl-3">
-                                            <p class="name">Mohamed </p>
-                                            <span class="position">Touriste</span>
+                                            <p class="name">Fayssal </p>
+                                            <span class="position">Youtouber</span>
                                         </div>
                                     </div>
                                 </div>
@@ -230,14 +230,14 @@
                                     </p>
                                     <p class="mb-4">J'ai adoré mon séjour à Chefchaouen, la ville bleue. C'est un endroit
                                         magnifique et paisible. J'ai également visité les montagnes de l'Atlas et c'était
-                                        absolument incroyable."</p>
+                                        absolument incroyable.</p>
                                     <div class="d-flex align-items-center">
                                         <div class="user-img"
-                                            style="background-image: url('{{ asset('frontend/images/person_3.jpg') }}')">
+                                            style="background-image: url('{{ asset('frontend/images/younes.jpg') }}')">
                                         </div>
                                         <div class="pl-3">
                                             <p class="name">Younes </p>
-                                            <span class="position">Explorateur</span>
+                                            <span class="position">Youtouber</span>
                                         </div>
                                     </div>
                                 </div>
@@ -255,14 +255,14 @@
                                     </p>
                                     <p class="mb-4">Visiter le Maroc a été une expérience inoubliable. J'ai adoré la
                                         cuisine, les souks colorés, et l'hospitalité chaleureuse des locaux. C'est un pays
-                                        que je recommande à tous !"</p>
+                                        que je recommande à tous !</p>
                                     <div class="d-flex align-items-center">
                                         <div class="user-img"
-                                            style="background-image: url('{{ asset('frontend/images/person_2.jpg') }}')">
+                                            style="background-image: url('{{ asset('frontend/images/misaha.jpg') }}')">
                                         </div>
                                         <div class="pl-3">
-                                            <p class="name">Younes </p>
-                                            <span class="position">Voyageure</span>
+                                            <p class="name">Youssef </p>
+                                            <span class="position">Youtouber</span>
                                         </div>
                                     </div>
                                 </div>

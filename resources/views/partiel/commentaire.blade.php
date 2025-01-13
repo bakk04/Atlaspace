@@ -37,9 +37,9 @@
         </div>
     </div>
 
-    <!-- Modal pour ajouter un commentaire -->
+    <!-- Fenêtre modale pour ajouter un commentaire -->
     <div class="modal" id="addCommentModal" style="display: none;">
-        <div class="modal-content">
+        <div class="comment-modal-content">
             <h2>Ajouter un commentaire</h2>
             <form action="{{ route('commentaire.store') }}" method="POST">
                 @csrf

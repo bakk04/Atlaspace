@@ -16,17 +16,19 @@
         <div class="profile-card">
             <!-- Header Profil -->
             <div class="profile-header">
-                <div class="profile-avatar">
-                    {{ substr($userData['name'], 0, 1) }}
+                <div class="profile-logo-name">
+                    <div class="profile-logo">
+                        {{ substr($userData['name'], 0, 1) }}
+                    </div>
+                    <div class="profile-name-email">
+                        <h1>{{ $userData['name'] }}</h1>
+                        <h2>{{ $userData['email'] }}</h2>
+                    </div>
                 </div>
 
-                <div class="profile-info">
-                    <h1>{{ $userData['name'] }}</h1>
-                    <h2>{{ $userData['email'] }}</h2>
-                    <div class="profile-stats-inline">
-                        <span>{{ count($userReserve) }} Réservations d'Hôtels</span>
-                        <span>{{ count($ActiviteReserve) }} Activités</span>
-                    </div>
+                <div class="profile-stats">
+                    <span class="profile-stat">{{ count($userReserve) }} Réservations d'Hôtels</span>
+                    <span class="profile-stat">{{ count($ActiviteReserve) }} Activités</span>
                 </div>
 
                 <!-- Menu déroulant pour les options -->
@@ -45,7 +47,7 @@
                             @csrf
                             <input type="hidden" name="id" value="{{ $userData['id'] }}">
                             @method('DELETE')
-                            <button type="submit" style="color : red;"
+                            <button type="submit" class="delete-account-btn"
                                 onclick="confirmDeleteCompte({{ $userData['id'] }})">
                                 <i class="fas fa-user-times"></i> Supprimer le compte
                             </button>
@@ -53,6 +55,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Réservations d'Hôtels -->
             <div class="reservation-section">
                 <div class="section-card">

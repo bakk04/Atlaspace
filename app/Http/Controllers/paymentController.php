@@ -17,10 +17,11 @@ class PaymentController extends Controller
         try {
             $paymentIntent = \Stripe\PaymentIntent::create([
                 'amount' => $request->amount, // Montant en centimes
-                'currency' => 'usd', // Remplacez par votre devise
+                'currency' => 'mad', // Remplacez par votre devise
             ]);
 
             return response()->json([
+                //un identifiant unique généré par Stripe
                 'clientSecret' => $paymentIntent->client_secret,
             ]);
         } catch (\Exception $e) {

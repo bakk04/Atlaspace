@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfilPage;
 use App\Http\Controllers\ActiviteController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CommentaireController;
+use App\Http\Controllers\admin;
 
 // Routes GET pour afficher les différentes pages
 Route::get('/', [Acceuil::class, 'affiche']);
@@ -25,6 +26,7 @@ Route::get('/connexion', [Connexion::class, 'showLoginForm'])->name('connexion')
 Route::get('/profile', [ProfilPage::class, 'affiche'])->name('profile.view');
 Route::get('/hotel/details', [HotelController::class, 'affiche'])->name('hotel.details');
 Route::get('/profile/logout', [ProfilPage::class, 'logout'])->name('logout');
+Route::get('/admin',[admin::class,'affiche'])->name('admin');
 
 
 // Routes POST pour gérer les actions

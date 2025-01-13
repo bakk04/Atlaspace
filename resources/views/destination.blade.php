@@ -6,14 +6,19 @@
     @if (session('error'))
         <x-alert :message="session('error')" type="danger" />
     @endif
-    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('frontend/images/bk5.jpg');">
+    <section class="hero-wrap hero-wrap-2 js-fullheight">
+        <video autoplay muted loop class="video-background">
+            <source src="{{ asset('frontend/images/bb.mp4') }}" type="video/mp4">
+            Votre navigateur ne supporte pas les vidéos HTML5.
+        </video>
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
                 <div class="col-md-9 ftco-animate pb-5 text-center">
-                    <p class="breadcrumbs"><span class="mr-2"><a href="/Acceuil">Acceuil <i
-                                    class="fa fa-chevron-right"></i></a></span> <span>Destination <i
-                                class="fa fa-chevron-right"></i></span></p>
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="/Acceuil">Acceuil <i class="fa fa-chevron-right"></i></a></span>
+                        <span>Destination <i class="fa fa-chevron-right"></i></span>
+                    </p>
                     <h1 class="mb-0 bread">Destination</h1>
                 </div>
             </div>
@@ -23,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="search-wrap-1 ftco-animate">
+                    <div class="search-wrap-1 ftco-animate" id="Recherche">
                         <form method="POST" action="{{ route('destination.activite') }}" class="search-property-1">
                             @csrf
                             <div class="row no-gutters">
@@ -113,7 +118,11 @@
                                     <h3><a href="#">Activité à {{ $VilleData['name'] }}</a></h3>
                                     <p class="location"><span class="fa fa-map-marker"></span> {{ $VilleData['name'] }},
                                         Maroc</p>
-                                    <button type="submit" class="btn btn-primary mt-3">Voir plus</button>
+                                    <button type="submit" class="btn-professional mt-3">
+                                        Voir plus
+                                        <span class="w3-animate-right btn-icon"></span>
+                                    </button>
+
                                 </div>
                             </div>
                         </form>

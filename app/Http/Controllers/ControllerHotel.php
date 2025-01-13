@@ -17,7 +17,7 @@ class ControllerHotel extends Controller
     // Formater le nom de la ville : première lettre en majuscule
     $Name = ucfirst(strtolower($request->name));
     // Rechercher les hôtels en fonction de la ville
-    $hotelDatas = DB::table('hotels')->whereRaw("SUBSTRING_INDEX(location, ',', 1) = ?", [$Name])->get();
+    $hotelDatas = Hotel::where('location',$Name)->get();
     // Retourner les données des hôtels trouvés
     if($hotelDatas->isEmpty()){
         $hotelDatas = Hotel::all();

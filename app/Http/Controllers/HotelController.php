@@ -19,13 +19,7 @@ class HotelController extends Controller
 
     public function reserve(Request $request)
     {
-        // Nettoyer la valeur du prix pour extraire uniquement la partie numérique
-        $prix = preg_replace('/[^0-9.]/', '', $request->input('prix'));
-        // Vérifier si le prix est valide après nettoyage
-        if (!is_numeric($prix) || $prix <= 0) {
-            return back()->with('error', 'Le prix de la réservation est invalide.');
-        }
-        $request->merge(['prix' => $prix]);
+        
         $validated = $request->validate([
             'nom_hotel' => 'required|string|max:255',
             'prix' => 'required|numeric|min:500|max:10000',
@@ -40,6 +34,12 @@ class HotelController extends Controller
         if (!$user) {
             return redirect()->route('login')->with('error', "Veuillez créer un compte avant de réserver.");
         }
+        $hotel = Hotel::where('name', $validated['nom_hotel'])->first();
+        if ($hotel->chambre < $validated['nights']) {
+            return redirect()->route('hotel')->with('error', "Désolé, il n'y a pas suffisamment de chambres disponibles.");
+        }
+        $hotel->chambre -= $validated['nights'];
+        $hotel->save();
         // Créer la réservation
         Reserve::create([
             'user_id' => $user->id,

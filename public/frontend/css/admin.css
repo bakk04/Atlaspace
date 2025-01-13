@@ -1,0 +1,482 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-orange: #ff7a00;
+    --secondary-orange: #ff5500;
+    --dark-orange: #cc4400;
+    --light-orange: #fff0e6;
+    --gradient-orange: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+    --bg-gradient: linear-gradient(135deg, #ffffff, #f8f9fa);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes movingGradient {
+    0% {
+        background-position: 0% 50%;
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        background-position: 100% 50%;
+        transform: translate(50px, 25px) rotate(90deg);
+    }
+
+    100% {
+        background-position: 0% 50%;
+        transform: translate(100px, 50px) rotate(180deg);
+    }
+}
+
+@keyframes floatingCard {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowingBorder {
+    0% {
+        box-shadow: 0 0 5px var(--primary-orange);
+    }
+
+    50% {
+        box-shadow: 0 0 20px var(--secondary-orange);
+    }
+
+    100% {
+        box-shadow: 0 0 5px var(--primary-orange);
+    }
+}
+
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 280px;
+    background: linear-gradient(135deg, #1a1a1a, #333333);
+    color: white;
+    padding: 2rem;
+    z-index: 100;
+}
+
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 20%, rgba(255, 122, 0, 0.1) 40%, transparent 60%);
+    animation: movingGradient 15s infinite linear;
+    z-index: -1;
+}
+
+.menu-item {
+    position: relative;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+.menu-item:hover {
+    background: var(--gradient-orange);
+    transform: translateX(10px);
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.menu-item:hover::before {
+    left: 100%;
+}
+
+.main-content {
+    margin-left: 280px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.header-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.header-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 122, 0, 0.1));
+    animation: movingGradient 10s infinite alternate;
+}
+
+/* Style des Cartes Statistiques */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.stat-icon {
+    font-size: 40px;
+    color: #ff5500;
+    margin-right: 15px;
+}
+
+.stat-details h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #343a40;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff7a00;
+}
+
+.stat-change {
+    font-size: 14px;
+    color: #28a745;
+    margin-top: 5px;
+}
+
+/* Carte Météo */
+.stat-card.weather {
+    background: linear-gradient(135deg, #ffcc80, #ffa726);
+    color: #fff;
+}
+
+.stat-card.weather .stat-icon {
+    color: #fff;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.progress-value {
+    height: 100%;
+    background: var(--gradient-orange);
+    border-radius: 4px;
+    position: relative;
+    transition: width 1s ease;
+}
+
+.progress-value::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: progressShine 2s infinite linear;
+}
+
+@keyframes progressShine {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+
+.chart-container {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    animation: glowingBorder 3s infinite;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animation de l'icône */
+.logo-icon {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.logo-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.logo-icon svg {
+    stroke: #fff;
+    transition: stroke 0.3s ease;
+}
+
+.logo-icon:hover svg {
+    stroke: #e0e0e0;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+/* Style et animation du texte */
+.logo-text {
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    background: linear-gradient(135deg, #ffffff, #a0a0a0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Effet hover sur le texte */
+.logo-text:hover {
+    filter: brightness(1.2);
+    letter-spacing: 0.5px;
+}
+
+/* Animation d'apparition au chargement */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo-wrapper {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Effet de brillance au survol */
+.logo-wrapper::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
+    transform: rotate(45deg);
+    transition: transform 0.6s ease;
+    opacity: 0;
+}
+
+.logo-wrapper:hover::after {
+    opacity: 1;
+    transform: rotate(45deg) translate(50%, 50%);
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Style général de la table */
+.table-container {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre de la table */
+h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+/* Style du tableau */
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #00B7FF;
+    transition: all 0.3s ease;
+}
+
+/* En-têtes du tableau */
+.dashboard-table thead {
+    background-color: #007BFF;
+    color: #000;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    padding: 12px 18px;
+    text-align: left;
+}
+
+/* Lignes du tableau */
+.dashboard-table tr {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.dashboard-table tr:hover {
+    background-color: #f1f3f5;
+    transform: scale(1.02);
+}
+
+/* Style des colonnes du tableau */
+.dashboard-table td {
+    font-size: 14px;
+    color: #495057;
+    border-left: 1px solid #ddd;
+}
+
+.dashboard-table td:first-child {
+    border-left: none;
+}
+
+/* Animation de survol sur les cellules */
+.dashboard-table td:hover {
+    background-color: #e9ecef;
+}
+
+/* Statuts avec des couleurs */
+.status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+/* Statut "Confirmé" */
+.status.confirmed {
+    background-color: #28a745;
+}
+
+/* Statut "En attente" */
+.status.pending {
+    background-color: #ffc107;
+}
+
+/* Statut "Annulé" */
+.status.cancelled {
+    background-color: #dc3545;
+}
+
+/* Animations */
+@keyframes fadeInTable {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.table-container {
+    animation: fadeInTable 1s ease-in-out;
+}
+
+/* Boutons de filtrage ou autres actions (optionnels) */
+.table-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.table-actions button {
+    padding: 8px 15px;
+    background-color: #4e73df;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.table-actions button:hover {
+    background-color: #375a8c;
+}

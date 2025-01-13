@@ -4,9 +4,10 @@
     --gradient-card: linear-gradient(135deg, #FF8008 0%, #FFA03C 100%);
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 10px rgba(0, 0, 0, 0.12);
     --border-radius: 20px;
     --card-radius: 16px;
+    margin-top: 1rem;
 }
 
 /* Conteneur principal */
@@ -25,47 +26,185 @@
     width: 100%;
 }
 
-/* En-tête du profil */
+/* Profil de l'utilisateur */
 .profile-header {
-    display: grid;
-    grid-template-columns: auto 1fr auto auto;
-    gap: 2rem;
-    align-items: start;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    /* Séparation entre le contenu principal et le menu */
+    align-items: center;
+    /* Centrer verticalement les éléments */
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 1080px;
+    margin: 0 auto;
 }
 
-/* Avatar */
-.profile-avatar {
-    width: 100px;
-    height: 100px;
-    background: var(--gradient-card);
-    border-radius: 50%;
+/* Conteneur pour le logo et le nom/email */
+.profile-logo-name {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
+    flex-grow: 1;
+}
+
+/* Logo du profil avec un dégradé orange sombre */
+.profile-logo {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #ff6f00, #ff9e00);
+    /* Dégradé orange sombre */
     color: white;
-    box-shadow: var(--shadow-md);
-}
-
-/* Informations du profil */
-.profile-info {
-    padding-right: 2rem;
-}
-
-.profile-info h1 {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: #2d3748;
-    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 20px;
 }
 
-.profile-info h2 {
-    font-size: 1.1rem;
-    color: #718096;
+/* Conteneur pour le nom et l'email */
+.profile-name-email {
+    display: flex;
+    flex-direction: column;
+    /* Alignement vertical du nom et email */
+    justify-content: center;
 }
+
+/* Nom de l'utilisateur */
+.profile-name-email h1 {
+    font-size: 1.7rem;
+    /* Taille ajustée */
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    color: #333;
+}
+
+/* Email */
+.profile-name-email h2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.7;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+/* Stats du profil (réservations et activités) */
+.profile-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 0.9;
+    margin-top: 15px;
+    min-width: 200px;
+}
+
+/* Statistique individuelle */
+.profile-stat {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 18px;
+    border-radius: 25px;
+    color: #333;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Effet de survol des stats */
+.profile-stat:hover {
+    background: rgba(255, 255, 255, 1);
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+
+/* Menu déroulant */
+.dropdown {
+    position: relative;
+    margin-left: 20px;
+    /* Espacement à gauche du menu */
+}
+
+.dropdown-btn {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Effet de survol et de rotation sur le bouton */
+.dropdown-btn:hover {
+    color: #ff6f00;
+    transform: rotate(180deg);
+}
+
+/* Menu déroulant */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 10px 0;
+    min-width: 160px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Affichage du menu déroulant */
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+/* Style des éléments du menu */
+.dropdown-content form button {
+    background: none;
+    border: none;
+    color: #333;
+    padding: 10px 20px;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+/* Effet de survol sur les boutons du menu */
+.dropdown-content form button:hover {
+    background-color: #f2f2f2;
+    padding-left: 25px;
+    color: #ff6f00;
+}
+
+/* Bouton de suppression de compte */
+.delete-account-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Effet de survol sur le bouton de suppression */
+.delete-account-btn:hover {
+    background-color: #d32f2f;
+    transform: translateY(-2px);
+}
+
 
 /* Boutons de paramètres */
 .settings-option {
@@ -135,6 +274,7 @@
 
 /* Sections de réservation */
 .reservation-section {
+    margin-top: 20px;
     padding: 0 2rem;
     margin-bottom: 2rem;
 }

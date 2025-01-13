@@ -1,5 +1,22 @@
 @extends('layouts.master')
 @section('main')
+    <section class="hero-wrap hero-wrap-2 js-fullheight">
+        <video autoplay muted loop class="video-background">
+            <source src="{{ asset('frontend/images/ll.mp4') }}" type="video/mp4">
+            Votre navigateur ne supporte pas les vidéos HTML5.
+        </video>
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs"><span class="mr-2"><a href="/">Acceuil <i
+                                    class="fa fa-chevron-right"></i></a></span> <span>À propos <i
+                                class="fa fa-chevron-right"></i></span></p>
+                    <h1 class="mb-0 bread">À propos</h1>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="ftco-section services-section">
         <div class="container">
             <div class="row d-flex">
@@ -71,6 +88,65 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-no-pb contact-section mb-4">
+        <div class="container">
+            <div class="row d-flex contact-info">
+                <div class="col-md-3 d-flex">
+                    <div class="align-self-stretch box p-4 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-map-marker"></span>
+                        </div>
+                        <h3 class="mb-2">Address</h3>
+                        <p>Agdal, Rabat</p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="align-self-stretch box p-4 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-phone"></span>
+                        </div>
+                        <h3 class="mb-2">Numéro Téléphone </h3>
+                        <p><a href="tel://1234567920">+212 628503265</a></p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="align-self-stretch box p-4 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-paper-plane"></span>
+                        </div>
+                        <h3 class="mb-2">Email </h3>
+                        <p><a href="mailto:info@yoursite.com">Atlaspace@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="align-self-stretch box p-4 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-globe"></span>
+                        </div>
+                        <h3 class="mb-2">Ecole </h3>
+                        <p><a href="#">https://emsi.ma/</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-intro ftco-section ftco-no-pt">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    <div class="img" style="background-image: url(frontend/images/bg_2.jpg);">
+                        <div class="overlay"></div>
+                        <h2>Bienvenue chez Atalspace, votre agence de voyage</h2>
+                        <p>Nous réalisons vos rêves de voyage. Une petite rivière appelée Duden traverse cet endroit
+                            magnifique.</p>
+                        <p class="mb-0">
+                            <a href="/" class="btn btn-primary px-4 py-3">Accueil</a>
+                        </p>
                     </div>
                 </div>
             </div>
