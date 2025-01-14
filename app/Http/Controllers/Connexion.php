@@ -17,7 +17,6 @@ class Connexion extends Controller
         if (Auth::attempt($credentials)) {
             $userData = Auth::user();
             if ($userData->type === 'admin') {
-                $client = User::with('reserves');
                 $totalHotel = Reserve::all();
                 $totalActivite = ReserveActivite::all();
                 $totalUser = User::all();
